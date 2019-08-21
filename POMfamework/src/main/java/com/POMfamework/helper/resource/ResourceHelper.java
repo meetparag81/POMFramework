@@ -1,4 +1,4 @@
-package com.POMfamework.helper.resorce;
+package com.POMfamework.helper.resource;
 
 import org.apache.log4j.Logger;
 
