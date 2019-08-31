@@ -7,7 +7,7 @@ import org.openqa.selenium.WebDriver;
 
 import com.POMfamework.helper.Frame.SwitchHelper;
 import com.POMfamework.helper.logger.LoggerHelper;
-
+//test
 public class WindowHelper {
 	private WebDriver driver;
 	private Logger log = LoggerHelper.GetLogger(SwitchHelper.class);
