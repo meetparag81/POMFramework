@@ -17,7 +17,8 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 
 import com.POMfamework.helper.logger.LoggerHelper;
 
-public class WaitHelper {
+public class WaitHelper 
+{
 	private Logger log = LoggerHelper.GetLogger(WaitHelper.class);
 	private WebDriver driver;
 
