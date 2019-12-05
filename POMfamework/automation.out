@@ -1,1 +1,6 @@
 2019-07-23 16:17:01 INFO  LoggerHelper:27 - test
+2019-10-20 14:05:18 INFO  Retry:17 - RetryingtestTestwithstatus FAILUREfor the1times
+2019-10-20 14:05:18 INFO  Retry:17 - RetryingtestTestwithstatus FAILUREfor the2times
+2019-10-20 14:05:18 INFO  Retry:17 - RetryingtestTestwithstatus FAILUREfor the3times
+2019-10-20 14:22:21 INFO  Retry:17 - RetryingtestTestwithstatus FAILUREfor the1times
+2019-10-20 14:22:21 INFO  Retry:17 - RetryingtestTestwithstatus FAILUREfor the2times

@@ -14,6 +14,7 @@ private Logger log = LoggerHelper.GetLogger(SwitchHelper.class)	;
 public SwitchHelper(WebDriver driver)
 {
 	this.driver=driver;
+	log.info("SwitchHelper has been initalized");
 }
 
 /**
