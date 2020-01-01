@@ -60,10 +60,10 @@ public class dropDownHelper
 		log.info("DeselectByUsigValue and value is:" + value);
 		sel.deselectByValue(value);
 	}
-	public List<String>  getAllDropDownOptions(WebElement ele)
+	public List<String> getAllDropDownOptions(WebElement ele)
 	{
 		Select sel = new Select(ele);
-		log.info("DeselectByUsigValue and value is:" + value);
+		
 		List<WebElement>elementlists= sel.getOptions();
 		List<String> valuelist = new LinkedList<String>();
 		for (WebElement ele1:elementlists)
@@ -71,5 +71,6 @@ public class dropDownHelper
 			log.info(ele1.getText());
 			valuelist.add(ele1.getText());
 		}
+		return valuelist;
 	}
 }
