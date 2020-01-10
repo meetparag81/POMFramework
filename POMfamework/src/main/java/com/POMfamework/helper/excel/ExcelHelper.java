@@ -47,7 +47,7 @@ public class ExcelHelper
 		XSSFSheet sheet = workbook.getSheet(sheetname);
 		//countActverows in sheets
 		int totalrows= sheet.getLastRowNum();
-		//countActive columns inrows
+		//countActive columns in row
 		int totalcolmns = sheet.getRow(0).getLastCellNum();
 		datasets= new String[totalrows][totalcolmns];
 		
@@ -56,7 +56,7 @@ public class ExcelHelper
 		int i=0;
 		while(rowiterator.hasNext())
 		{
-			//for every row need to ierate over column
+			//for every row need to iterate over column
 			Row row = rowiterator.next();
 			Iterator<Cell> cellierator = row.cellIterator();
 			while(cellierator.hasNext())
