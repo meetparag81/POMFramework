@@ -33,11 +33,11 @@ public class ExcelHelper
 	
 
 	
-	public void getExcelData(String Excellocation,String sheetname)
+	public Object[][] getExcelData(String Excellocation,String sheetname)
 	{
 		try
 		{
-			String datasets[][]= null;
+			Object datasets[][]= null;
 			File Fileloc = new File(Excellocation);
 					
 			FileImageInputStream File = new FileImageInputStream(Fileloc);
@@ -49,28 +49,55 @@ public class ExcelHelper
 		int totalrows= sheet.getLastRowNum();
 		//countActive columns in row
 		int totalcolmns = sheet.getRow(0).getLastCellNum();
-		datasets= new String[totalrows][totalcolmns];
+		datasets= new Object[totalrows][totalcolmns];
 		
 		//itrate through each row
 		Iterator<Row> rowiterator = sheet.iterator();
 		int i=0;
 		while(rowiterator.hasNext())
 		{
+			i++;
 			//for every row need to iterate over column
 			Row row = rowiterator.next();
+			int j=0;
 			Iterator<Cell> cellierator = row.cellIterator();
 			while(cellierator.hasNext())
 			{
+				j++;
 				Cell cell = cellierator.next();
+				switch(cell.getCellTypeEnum())
+					{
+					case STRING	:				
+						datasets[i][j]= cell.getStringCellValue();
+						break;
+					case NUMERIC:
+						datasets[i][j]= cell.getNumericCellValue();
+						break;
+					case BOOLEAN:
+					datasets[i][j]= cell.getBooleanCellValue();
+					break;
+				case FORMULA:
+					datasets[i][j]= cell.getCellFormula();
+					break;
+				default:
+					System.out.println("No Matching Enum type found");
+					break;
+					
+						
+					
+					}
+				
+				}
 			}
+		return datasets;
 			
-			
-		}
+		
 		
 		}
 		catch(Exception e)
 		{
-			
+			e.printStackTrace();
+			return null;
 		}
 	}
 }
