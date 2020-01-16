@@ -8,13 +8,6 @@ import java.util.Iterator;
 import javax.imageio.stream.FileImageInputStream;
 
 import org.apache.log4j.Logger;
-import org.apache.poi.hssf.usermodel.HSSFCellStyle;
-import org.apache.poi.hssf.usermodel.HSSFDateUtil;
-import org.apache.poi.hssf.util.HSSFColor;
-import org.apache.poi.ss.usermodel.Cell;
-import org.apache.poi.ss.usermodel.CellStyle;
-import org.apache.poi.ss.usermodel.IndexedColors;
-import org.apache.poi.ss.usermodel.Row;
 import org.apache.poi.xssf.usermodel.XSSFCell;
 import org.apache.poi.xssf.usermodel.XSSFCellStyle;
 import org.apache.poi.xssf.usermodel.XSSFCreationHelper;
@@ -55,6 +48,7 @@ public class ExcelHelper
 		
 		//itrate through each row
 		Iterator<Row> rowiterator = sheet.iterator();
+		rowiterator= sheet.iterator();
 		int i=0;
 		while(rowiterator.hasNext())
 		{
