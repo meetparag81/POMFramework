@@ -25,6 +25,7 @@ import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 
 import com.POMfamework.helper.logger.LoggerHelper;
+import com.POMfamework.helper.resource.ResourceHelper;
 
 public class ExcelHelper 
 {
@@ -65,7 +66,7 @@ public class ExcelHelper
 			{
 				j++;
 				Cell cell = cellierator.next();
-				switch(cell.getCellTypeEnum())
+				switch(cell.getCellType())
 					{
 					case STRING	:				
 						datasets[i][j]= cell.getStringCellValue();
@@ -99,5 +100,12 @@ public class ExcelHelper
 			e.printStackTrace();
 			return null;
 		}
+	}
+	
+	public static void main(String[] args) 
+	{
+		ExcelHelper excel = new ExcelHelper();
+		String Excellocation = ResourceHelper.GetResourcePath("\\src\\main\\java\\com\\POMfamework\\helper\\excelData\\Data.xlsx");
+		Object[][] data = excel.getExcelData(Excellocation, "Login");
 	}
 }
