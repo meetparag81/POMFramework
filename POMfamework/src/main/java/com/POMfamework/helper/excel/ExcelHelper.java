@@ -3,12 +3,14 @@ package com.POMfamework.helper.excel;
 
 
 import java.io.File;
+import java.io.FileInputStream;
 import java.util.Iterator;
 
 import javax.imageio.stream.FileImageInputStream;
 
 import org.apache.log4j.Logger;
-import org.apache.poi.xssf.usermodel.XSSFCell;
+import org.apache.poi.ss.usermodel.Cell;
+import org.apache.poi.ss.usermodel.Row;
 import org.apache.poi.xssf.usermodel.XSSFCellStyle;
 import org.apache.poi.xssf.usermodel.XSSFCreationHelper;
 import org.apache.poi.xssf.usermodel.XSSFFont;
@@ -34,20 +36,20 @@ public class ExcelHelper
 			Object datasets[][]= null;
 			File Fileloc = new File(Excellocation);
 					
-			FileImageInputStream File = new FileImageInputStream(Fileloc);
+			FileInputStream  File = new FileInputStream(Fileloc);
 			//create workbook instance
 			System.out.println();
-			XSSFWorkbook workbook = new XSSFWorkbook();
+			 XSSFWorkbook workbook = new XSSFWorkbook(File);
 			//GetSheetNamefromworkbook
 		XSSFSheet sheet = workbook.getSheet(sheetname);
 		//countActverows in sheets
 		int totalrows= sheet.getLastRowNum();
 		//countActive columns in row
 		int totalcolmns = sheet.getRow(0).getLastCellNum();
-		datasets= new Object[totalrows][totalcolmns];
-		
+		datasets= new Object[totalrows+1][totalcolmns];
+		System.out.println("totalrows are"+totalrows);
 		//itrate through each row
-		Iterator<Row> rowiterator = sheet.iterator();
+ Iterator<Row> rowiterator = sheet.iterator();
 		rowiterator= sheet.iterator();
 		int i=0;
 		while(rowiterator.hasNext())
@@ -56,7 +58,7 @@ public class ExcelHelper
 			//for every row need to iterate over column
 			Row row = rowiterator.next();
 			int j=0;
-			Iterator<Cell> cellierator = row.cellIterator();
+Iterator<Cell> cellierator = row.cellIterator();
 			while(cellierator.hasNext())
 			{
 				j++;
@@ -64,7 +66,7 @@ public class ExcelHelper
 				switch(cell.getCellType())
 					{
 					case STRING	:				
-						datasets[i][j]= cell.getStringCellValue();
+						datasets[i-1][j-1]= cell.getStringCellValue();
 						break;
 					case NUMERIC:
 						datasets[i][j]= cell.getNumericCellValue();
@@ -95,6 +97,30 @@ public class ExcelHelper
 			e.printStackTrace();
 			return null;
 		}
+		
+		
+	}
+	
+	public void UpdateResults(String filepath, String sheetname, String testcasename,String status) 
+	{
+		try
+		{
+			File Fileloc = new File(filepath);
+			 FileInputStream FIS = new FileInputStream(Fileloc);
+			 XSSFWorkbook workbook = new XSSFWorkbook(FIS);
+			 XSSFSheet sheet = workbook.getSheet(sheetname);
+			 int totalrows= sheet.getLastRowNum()+1;
+			 for(int i= 1;i<totalrows;i++)
+			 {
+				 XSSFRow r = sheet.getRow(i);
+				 
+			 }
+			
+		}
+		catch(Exception e)
+		{
+			e.printStackTrace();
+		}
 	}
 	
 	public static void main(String[] args) 
@@ -102,5 +128,6 @@ public class ExcelHelper
 		ExcelHelper excel = new ExcelHelper();
 		String Excellocation = ResourceHelper.GetResourcePath("\\src\\main\\java\\com\\POMfamework\\helper\\excelData\\Data.xlsx");
 		Object[][] data = excel.getExcelData(Excellocation, "Login");
+		System.out.println(data.toString());
 	}
 }
