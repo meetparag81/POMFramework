@@ -113,6 +113,7 @@ Iterator<Cell> cellierator = row.cellIterator();
 			 for(int i= 1;i<totalrows;i++)
 			 {
 				 XSSFRow r = sheet.getRow(i);
+				String ce = r.getCell(1).getStringCellValue();
 				 
 			 }
 			
