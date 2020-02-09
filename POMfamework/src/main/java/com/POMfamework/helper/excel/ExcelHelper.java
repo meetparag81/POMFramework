@@ -16,6 +16,8 @@ import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 import com.POMfamework.helper.logger.LoggerHelper;
 import com.POMfamework.helper.resource.ResourceHelper;
 
+import freemarker.core.StringArraySequence;
+
 public class ExcelHelper 
 {
 	private static  Logger log = LoggerHelper.GetLogger(ExcelHelper.class);
@@ -123,6 +125,6 @@ Iterator<Cell> cellierator = row.cellIterator();
 		ExcelHelper excel = new ExcelHelper();
 		String Excellocation = ResourceHelper.GetResourcePath("\\src\\main\\java\\com\\POMfamework\\helper\\excelData\\Data.xlsx");
 		Object[][] data = excel.getExcelData(Excellocation, "Login");
-		System.out.println(data.toString());
+		System.out.println(data);
 	}
 }
