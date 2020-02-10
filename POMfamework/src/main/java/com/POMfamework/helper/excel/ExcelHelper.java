@@ -4,6 +4,7 @@ package com.POMfamework.helper.excel;
 
 import java.io.File;
 import java.io.FileInputStream;
+import java.io.FileOutputStream;
 import java.util.Iterator;
 
 import org.apache.log4j.Logger;
@@ -97,20 +98,30 @@ Iterator<Cell> cellierator = row.cellIterator();
 		
 	}
 	
-	public void UpdateResults(String filepath, String sheetname, String testcasename,String status) 
+	public void UpdateResults(String excellocation, String sheetname, String testcasename,String Teststatus) 
 	{
 		try
 		{
-			File Fileloc = new File(filepath);
-			 FileInputStream FIS = new FileInputStream(Fileloc);
-			 XSSFWorkbook workbook = new XSSFWorkbook(FIS);
+			File Fileloc = new File(excellocation);
+			 FileInputStream File = new FileInputStream(Fileloc);
+			 XSSFWorkbook workbook = new XSSFWorkbook(File);
 			 XSSFSheet sheet = workbook.getSheet(sheetname);
 			 int totalrows= sheet.getLastRowNum()+1;
 			 for(int i= 1;i<totalrows;i++)
 			 {
 				 XSSFRow r = sheet.getRow(i);
-				String ce = r.getCell(1).getStringCellValue();
-				 
+				String ce = r.getCell(0).getStringCellValue();
+				 if(ce.contains(testcasename))
+				 {
+					 r.createCell(1).setCellValue(Teststatus);
+					 File.close();
+					 log.info("result updated...");
+					 //File OutputStrem takes File as a parameter
+					 FileOutputStream out = new FileOutputStream( Fileloc);
+					 workbook.write(out);
+					 out.close();
+					 break;
+				 }
 			 }
 			
 		}
@@ -126,5 +137,10 @@ Iterator<Cell> cellierator = row.cellIterator();
 		String Excellocation = ResourceHelper.GetResourcePath("\\src\\main\\java\\com\\POMfamework\\helper\\excelData\\Data.xlsx");
 		Object[][] data = excel.getExcelData(Excellocation, "Login");
 		System.out.println(data);
+		
+		excel.UpdateResults(Excellocation, "TestResult", "Login", "PASS");
+		excel.UpdateResults(Excellocation, "TestResult", "Home", "FAIL");
+		excel.UpdateResults(Excellocation, "TestResult", "Cart", "PASS");
+		
 	}
 }
