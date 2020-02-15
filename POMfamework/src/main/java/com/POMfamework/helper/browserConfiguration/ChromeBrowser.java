@@ -14,7 +14,7 @@ public class ChromeBrowser
 		DesiredCapabilities chrome = new DesiredCapabilities().chrome();
 		chrome.setJavascriptEnabled(true);
 		option.setCapability(ChromeOptions.CAPABILITY, option);
-		if(System.getProperty("osname").contains("Linux")
+		if(System.getProperty("osname").contains("Linux"))
 				{
 			
 				}
