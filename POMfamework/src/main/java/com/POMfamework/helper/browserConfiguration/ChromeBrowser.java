@@ -16,7 +16,7 @@ public class ChromeBrowser
 		option.setCapability(ChromeOptions.CAPABILITY, option);
 		if(System.getProperty("osname").contains("Linux"))
 				{
-			
+				option.addArguments("--hedless","window-size=1024,768","--nosandbox" );
 				}
 		
  		return option;
