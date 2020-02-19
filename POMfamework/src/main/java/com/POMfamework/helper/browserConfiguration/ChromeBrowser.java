@@ -1,5 +1,9 @@
 package com.POMfamework.helper.browserConfiguration;
 
+import java.nio.channels.NetworkChannel;
+
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.remote.DesiredCapabilities;
 
@@ -20,7 +24,18 @@ public class ChromeBrowser
 				}
 		
  		return option;
-		
+ 		
 	}
+	public WebDriver getChromeDriver(ChromeOptions cap)
+		{
+		if(System.getProperty("osname").contains("Mac"))
+		{
+			System.setProperty("webdriver., value)
+			return new ChromeDriver(cap);
+		}
+			
+		return null;
+			
+		}
 
 }
