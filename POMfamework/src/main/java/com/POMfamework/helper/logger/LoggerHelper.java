@@ -11,8 +11,7 @@ public class LoggerHelper
 {
 	private static boolean root= false;
 	
-	public static Logger GetLogger(Class cls)
-			{
+	public static Logger GetLogger(Class cls){
 			if(root)
 			{
 			return Logger.getLogger(cls);

@@ -1,4 +1,4 @@
-package com.POMfamework.helper.browserConfiguration;
+package com.POMfamework.helper.browserconfiguration;
 
 public enum BrowserType 
 {
