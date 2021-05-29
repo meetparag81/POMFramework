@@ -30,7 +30,7 @@ public class ChromeBrowser
 		{
 		if(System.getProperty("osname").contains("Mac"))
 		{
-			System.setProperty("webdriver., value)
+			System.setProperty("webdriver.", "value");
 			return new ChromeDriver(cap);
 		}
 			
@@ -39,3 +39,4 @@ public class ChromeBrowser
 		}
 
 }
+""
