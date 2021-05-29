@@ -10,7 +10,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import com.POMfamework.helper.logger.LoggerHelper;
-//
+
 public class AlertHelper {
 	private WebDriver driver;
 	private long timeOutInSeconds = 30;
